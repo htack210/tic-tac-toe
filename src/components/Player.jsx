@@ -4,7 +4,7 @@ export default function Player({ name, symbol }) {
     const [isEditing, setIsEditing] = useState(false);
 
     function handleEditClick() {
-        setIsEditing(!isEditing); /* Toggle the value */
+        setIsEditing((editing) => !editing); /* Toggle the value usng a function to get latest state. Best practice. */
     }
 
     return (
