@@ -8,10 +8,6 @@ export default function Player({ initialName, symbol }) {
         setIsEditing((editing) => !editing); /* Toggle the value usng a function to get latest state. Best practice. */
     }
 
-    // function handleChange(event) {
-    //     setPlayerName(event.target.value);
-    // }
-
     return (
         <li>
             <span className="player">
