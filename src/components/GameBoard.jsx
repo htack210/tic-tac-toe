@@ -1,11 +1,14 @@
 import {useState} from 'react';
 
+// Initialize the gameboard as an array of arrays.
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null]
 ];
 
+// GameBoard component handles the rendering and interaction of the game board.
+// onSelectSquare and activePlayerSymbol are passed as props to the GameBoard component.
 export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
