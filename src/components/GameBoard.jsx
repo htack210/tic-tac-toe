@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 // Initialize the gameboard as an array of arrays.
 const initialGameBoard = [
@@ -9,23 +9,14 @@ const initialGameBoard = [
 
 // GameBoard component handles the rendering and interaction of the game board.
 // onSelectSquare and activePlayerSymbol are passed as props to the GameBoard component.
-export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
+export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-    /** Pass in rowIndex and colIndex to provide updated button coordinates
-     * 
-     * @param {*} colIndex 
-     * @param {*} rowIndex 
-     * Use that info to create and store an updated game board
-     */
-
-    function handleSelectSquare(rowIndex, colIndex) {
+    function handleSelectSquare(rowIndex, colIndex){
         setGameBoard((prevGameBoard) => {
-            // Use spreaders to create a copies of the game board arrays so the original React
-            // state is not mutated.
+            // Get a deep copy of the previous game board to avoid mutating state directly.
+            // The spreaders create a shallow copy of each inner array to ensure immutability.
             const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-
-            // Update the board with the current player's symbol using the button's coordinates.
             updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
             return updatedBoard;
         });
