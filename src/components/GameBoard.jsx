@@ -15,7 +15,7 @@ export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
     function handleSelectSquare(rowIndex, colIndex){
         setGameBoard((prevGameBoard) => {
             // Get a deep copy of the previous game board to avoid mutating state directly.
-            // The spreaders create a shallow copy of each inner array to ensure immutability.
+            // The spreaders create a copy of each array to ensure immutability.
             const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
             updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
             return updatedBoard;

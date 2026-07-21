@@ -6,7 +6,7 @@ export default function Player({ initialName, symbol, isActive }) {
 
   function handleEditClick() {
     setIsEditing(
-      (editing) => !editing,
+      (editing => !editing)
     ); /* Toggle the value usng a function to get latest state. Best practice. */
   }
 
