@@ -11,10 +11,11 @@ function App() {
   // Note: This function gets current player in an immutable way and we are not merging different states.
   function handleSelectSquare(rowIndex, colIndex) {
     setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
-    setGameTurns((prevTurns) => {
+    setGameTurns(prevTurns => {
       let currentPlayer = activePlayer;
 
-      if (prevTurns.length > 0 && prevTurns[0].player === "X") {currentPlayer = "O";
+      if (prevTurns.length > 0 && prevTurns[0].player === "X") {
+        currentPlayer = "O";
       }
 
       const updatedTurns = [
