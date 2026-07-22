@@ -1,5 +1,3 @@
-import {useState} from 'react';
-
 // Initialize the gameboard as an array of arrays.
 const initialGameBoard = [
     [null, null, null],
@@ -9,20 +7,20 @@ const initialGameBoard = [
 
 // GameBoard component handles the rendering and interaction of the game board.
 // onSelectSquare and activePlayerSymbol are passed as props to the GameBoard component.
-export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
+export default function GameBoard({onSelectSquare}) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-    function handleSelectSquare(rowIndex, colIndex){
-        setGameBoard((prevGameBoard) => {
-            // Get a deep copy of the previous game board to avoid mutating state directly.
-            // The spreaders create a copy of each array to ensure immutability.
-            const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-            updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-            return updatedBoard;
-        });
+    // function handleSelectSquare(rowIndex, colIndex){
+    //     setGameBoard((prevGameBoard) => {
+    //         // Get a deep copy of the previous game board to avoid mutating state directly.
+    //         // The spreaders create a copy of each array to ensure immutability.
+    //         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
+    //         updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
+    //         return updatedBoard;
+    //     });
 
-        onSelectSquare();
-    }
+    //     onSelectSquare();
+    // }
 
     return (
         <ol id="game-board">
@@ -30,7 +28,7 @@ export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
                 <ol>
                     {row.map((playerSymbol, colIndex) => (
                         <li key={colIndex}>
-                            <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
+                            <button onClick={onSelectSquare}>{playerSymbol}</button>
                         </li>
                     ))}
                 </ol>
